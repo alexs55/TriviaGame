@@ -75,22 +75,7 @@ var questions = [{
 var win = $("<div>")
 var lose = $("<div>")
 
-// var correctScreen = $("<div>")
 
-
-// correctScreen.attr({
-//     "class": "screen"
-// })
-// correctScreen.html('<h2>Correct!<h2>' + '<img src="' + "assets/images/victory.gif" + '">')
-
-// var incorrectScreen = $("<div>")
-
-// incorrectScreen.attr({
-//     "class": "screen"
-
-// })
-
-// incorrectScreen.html('<h2>Incorrect!<h2>' + '<img src="' + "assets/images/lose1.gif" + '">')
 
 win.attr({
     "class": 'result',
@@ -197,22 +182,10 @@ if (gameStarted === 0) {
     gameStarted++;
 }
 
-// check the question that was clicked
 
-// need to check if i can do another global function that works like thios one
-// function startSlideshow() {
-//     showImage = setInterval(nextImage, 3000);
-// }
-
-// function emptyIt() {
-//     $('.question').empty()
-//     $('.questions').empty()
-// }
-
-// checks if answer is correct
 
 $(document).on('click', ".question", function () {
-    
+
 
 
     var answer = questions[questionNumber].answer
@@ -222,18 +195,11 @@ $(document).on('click', ".question", function () {
         $(".correct").text(correct);
 
 
-        // $(".placeholder").append(correctScreen);
 
 
 
 
 
-        // var resultTimeout = setTimeout(function () {
-        //     questionNumber++;
-        //     roundtable();
-        //     $('.screen').empty();
-
-        // }, 3000)
     }
 
     else {
@@ -242,19 +208,6 @@ $(document).on('click', ".question", function () {
 
         $('.incorrect').text(incorrect);
 
-        // $(".placeholder").append(incorrectScreen)
-        // var incorrectScreen = $('<div>')
-        // var incorrectTitle = $('<div>')
-
-        // incorrectScreen.attr({
-        //     'class': "iscreen"
-
-        // })
-        // incorrectTitle.attr({
-        //     'class': "ititle"
-
-        // })
-        // console.log("did you wait");
 
 
 

@@ -131,7 +131,7 @@ function roundtable() {
                 location.reload();
                 return;
 
-            }, 5000)
+            }, 7000)
 
 
         }
@@ -142,7 +142,7 @@ function roundtable() {
                 location.reload()
                 return;
 
-            }, 5000)
+            }, 7000)
 
         }
 

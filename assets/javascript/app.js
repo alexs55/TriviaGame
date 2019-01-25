@@ -1,0 +1,299 @@
+// use intervals throught the code
+// create a for loop that will create the html elements oon the code
+// create objects for each of the questions and make so they are displayed
+// keep tally at the bottom of the screen
+// have a window after every question showing right or wrong
+
+
+// why the four loop is not working=  ( xxxx.text(variable) before appending)
+// how to diferentiate between questions and apply different objects
+// to-do, try to run intervals between questions, and styling
+
+var correct = 0
+var incorrect = 0
+// keeps tally of current question
+var questionNumber = 0
+var number = 30
+// creating intervalId to hold the interval information
+var intervalId;
+// to hold timer
+
+var gameStarted = 0
+
+
+
+
+
+
+var questions = [{
+    question: "Which one is an electric pokemon?",
+    choice: ["Blastoise", "Charizard", "venusaur", "pickachu"],
+    answer: "pickachu"
+},
+{
+    question: "Which of these Pokemon can mega evolve?",
+    choice: ["Sableye", "Nidoking", "Milotic", "Mismagius"],
+    answer: "Sableye"
+},
+{
+    question: "How many Gym Badges exist in the Kanto region?",
+    choice: ["4", "6", "9", "8"],
+    answer: "8"
+},
+{
+    question: "What is the name of the Pokemon Center nurse?",
+    choice: ['Joy', 'jenny', 'Mary', 'Nancy'],
+    answer: 'Joy'
+},
+{
+    question: "How many Pokemon have been discovered so far?",
+    choice: ["983", "984", "720", "567"],
+    answer: "720"
+}]
+
+var win = $("<div>")
+var lose = $("<div>")
+
+// var correctScreen = $("<div>")
+
+
+// correctScreen.attr({
+//     "class": "screen"
+// })
+// correctScreen.html('<h2>Correct!<h2>' + '<img src="' + "assets/images/victory.gif" + '">')
+
+// var incorrectScreen = $("<div>")
+
+// incorrectScreen.attr({
+//     "class": "screen"
+
+// })
+
+// incorrectScreen.html('<h2>Incorrect!<h2>' + '<img src="' + "assets/images/lose1.gif" + '">')
+
+win.attr({
+    "class": 'result',
+
+})
+
+
+win.html('<h2>You are the Pokemon Master!<h2>' + '<img src="' + "assets/images/giphy.gif" + '">')
+
+lose.attr({
+    "class": 'result',
+
+
+})
+
+lose.html('<h2>Good Try Team Rocket, You Lost!</h2>' + '<img src="' + "assets/images/Pokemon-Fainted.jpg" + '">')
+
+
+// to write the choices (having problems while trying to for loop the choices)
+console.log(questions[questionNumber].choice[1]);
+// mainfunction
+
+
+function roundtable() {
+    stop();
+    // moves to the next question
+   
+    $('screen').detach();
+    $('.question').detach();
+    $('.questions').detach();
+
+    if (questionNumber === 5) {
+        if (correct > incorrect) {
+            $(".placeholder").append(win);
+            stop();
+            return;
+
+        }
+        if (incorrect > correct) {
+            $(".placeholder").append(lose);
+            stop();
+            return;
+        }
+
+    }
+
+    else {
+
+        run();
+        var qWrite = questions[questionNumber].question
+        var que = $('<h2>');
+        que.attr({
+            "class": 'questions'
+        })
+
+        que.text(qWrite);
+
+        $('.placeholder').append(que);
+
+
+
+        // for loop that shows the questions on the screen
+        for (var i = 0; i < 4; i++) {
+
+            // it will call the correct question regarding the questionNumber variable
+            var writeIt = questions[questionNumber].choice[i];
+
+            var question = $("<div>")
+
+            question.attr({
+                "class": 'question',
+
+            });
+            //  to write the questions dinamically
+            question.text(writeIt);
+            question.css({
+                "background-image": "url'www.azonano.com/images/Article_Images/ImageForArticle_4983(1).jpg'",
+                // to manage how the questions and answers looks
+            })
+
+            $(".placeholder").append(question);
+
+            // to go the next question
+
+
+        }
+    }
+
+}
+
+if (gameStarted === 0) {
+    $(this).on('click', roundtable);
+    gameStarted++;
+}
+
+// check the question that was clicked
+
+// need to check if i can do another global function that works like thios one
+// function startSlideshow() {
+//     showImage = setInterval(nextImage, 3000);
+// }
+
+// function emptyIt() {
+//     $('.question').empty()
+//     $('.questions').empty()
+// }
+
+// checks if answer is correct
+
+$(document).on('click', ".question", function () {
+    
+    
+    var answer = questions[questionNumber].answer
+
+    if (this.innerHTML === answer) {
+        correct++;
+        $(".correct").text(correct);
+        
+
+        // $(".placeholder").append(correctScreen);
+
+    
+            
+
+        
+        // var resultTimeout = setTimeout(function () {
+        //     questionNumber++;
+        //     roundtable();
+        //     $('.screen').empty();
+
+        // }, 3000)
+    }
+
+    else {
+        incorrect++;
+
+        function showResultB() {
+            $('.incorrect').text(incorrect);
+
+            // $(".placeholder").append(incorrectScreen)
+            // var incorrectScreen = $('<div>')
+            // var incorrectTitle = $('<div>')
+
+            // incorrectScreen.attr({
+            //     'class': "iscreen"
+
+            // })
+            // incorrectTitle.attr({
+            //     'class': "ititle"
+
+            // })
+            // console.log("did you wait");
+
+        }
+
+        
+
+    }
+    questionNumber++;
+            roundtable();
+            
+    
+})
+
+function checkTime() {
+    incorrect++;
+    $('.incorrect').text(incorrect);
+
+    var incorrectScreen = $('<div>')
+    var incorrectTitle = $('<div>')
+
+    incorrectScreen.attr({
+
+    })
+    incorrectTitle.attr({
+
+    })
+
+    // need to create a function that includes these two and then waits 3 seconds
+    questionNumber++;
+    roundtable();
+
+
+
+}
+
+// decreases the timer
+function run() {
+    number = 30
+    intervalId = setInterval(decrement, 1000);
+
+}
+
+
+function decrement() {
+    number--;
+    $("#timer").html("<h2>" + number + "<h2>");
+    if (number === 0) {
+        stop();
+        checkTime();
+
+
+
+        // run for incorrect if nothing was clicked
+
+    }
+}
+
+// function for the result screen for three seconds
+
+var resultTimeout = setTimeout(function () {
+
+
+}, 3000)
+
+
+// to run the timer, needs to be put in the original 4 loop
+
+
+
+
+// stops the timer
+function stop() {
+    clearTimeout(intervalId);
+}
+
+

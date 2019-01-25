@@ -1,0 +1,35 @@
+body{
+    font-family: 'Bungee Inline', cursive;
+}
+
+
+
+.question{
+    text-align: center;
+    width: 95%;
+    height: 15%;
+    font-size: 34px;
+    padding: 15px;
+    background-image: url("https://cdn.dribbble.com/users/811229/screenshots/4772167/pokeball3.gif");
+    margin-top: 8px;
+    margin-bottom: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 1s, transform 2s;
+    border: 1px solid white;
+    border-radius: 2px;
+
+
+}
+
+.question:hover{
+    transform: translate(5px,10px);
+    transition: box-shadow 1s, transform 2s;
+}
+
+.questions{
+    text-align: center;
+    width: 95%;
+    height: 15%;
+    font-size: 42px;
+
+}

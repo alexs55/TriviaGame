@@ -84,7 +84,7 @@ win.attr({
 })
 
 
-win.html('<h2>You are the Pokemon Master!<h2>' + '<img src="' + "assets/images/giphy.gif" + '">')
+win.html('<h2>You are the Pokemon Master! Click Anywhere to try again!<h2>' + '<img src="' + "assets/images/giphy.gif" + '">')
 
 lose.attr({
     "class": 'result',
@@ -92,13 +92,23 @@ lose.attr({
 
 })
 
-lose.html('<h2>Good Try Team Rocket, You Lost!</h2>' + '<img src="' + "assets/images/team-rocket-blasting-off-again-gif-8.gif" + '">')
+lose.html('<h2>Good Try Team Rocket, You Lost! Click anywhere to try again!</h2>' + '<img src="' + "assets/images/team-rocket-blasting-off-again-gif-8.gif" + '">')
 
 
 // to write the choices (having problems while trying to for loop the choices)
 console.log(questions[questionNumber].choice[1]);
 // mainfunction
+function restart(){
+    gameStarted--;
+    questionNumber = 0
+    correct = 0
+    incorrect = 0
+    $('.incorrect').text(incorrect);
+    $(".correct").text(correct);
+    $('.result').detach();
+    
 
+}
 
 function roundtable() {
     stop();
@@ -114,10 +124,10 @@ function roundtable() {
             $(".placeholder").append(win);
             stop();
             var resultTimeout = setTimeout(function () {
-                location.reload();
-                return;
+                restart();
+                
 
-            }, 7000)
+            }, 5000)
 
 
         }
@@ -125,10 +135,10 @@ function roundtable() {
             $(".placeholder").append(lose);
             stop();
             var resultTimeout = setTimeout(function () {
-                location.reload()
-                return;
+                restart();
+                
 
-            }, 7000)
+            }, 5000)
 
         }
 

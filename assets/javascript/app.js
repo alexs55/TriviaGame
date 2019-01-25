@@ -13,7 +13,7 @@ var correct = 0
 var incorrect = 0
 // keeps tally of current question
 var questionNumber = 0
-var number = 30
+var number = 15
 // creating intervalId to hold the interval information
 var intervalId;
 // to hold timer
@@ -49,6 +49,27 @@ var questions = [{
     question: "How many Pokemon have been discovered so far?",
     choice: ["983", "984", "720", "567"],
     answer: "720"
+},
+{
+    question: "What's the most effective Poke Ball?",
+    choice: ["Great Ball", "Luxury Ball", "Timer Ball", "Master Ball"],
+    answer: "Master Ball"
+}, {
+    question: "Which of these Legendary Pokemon is known to appear randomly throughout the Johto region?",
+    choice: ["Registeel", "Celebi", "Suicune", "Charizard"],
+    answer: "Suicune"
+}, {
+    question: "Which of these is NOT an evolutionary stone?",
+    choice: ["Fire Stone", "Dragon Stone", "Moon Stone", "Water Stone"],
+    answer: "Dragon Stone"
+}, {
+    question: "Which of these Pokemon is NOT an Eeveelution?",
+    choice: ["Vaporeon", "Flareon", "Flygon", "Sylveon"],
+    answer: "Flygon"
+}, {
+    question: "Which of these is NOT an obtainable badge in the original Pokemon games?",
+    choice: ["Soul Badge", "Boulder Badge", "Night Badge", "Volcano Badge"],
+    answer: "Night Badge"
 }]
 
 var win = $("<div>")
@@ -85,7 +106,7 @@ lose.attr({
 
 })
 
-lose.html('<h2>Good Try Team Rocket, You Lost!</h2>' + '<img src="' + "assets/images/Pokemon-Fainted.jpg" + '">')
+lose.html('<h2>Good Try Team Rocket, You Lost!</h2>' + '<img src="' + "assets/images/team-rocket-blasting-off-again-gif-8.gif" + '">')
 
 
 // to write the choices (having problems while trying to for loop the choices)
@@ -96,22 +117,33 @@ console.log(questions[questionNumber].choice[1]);
 function roundtable() {
     stop();
     // moves to the next question
-   
+
     $('screen').detach();
     $('.question').detach();
     $('.questions').detach();
+    $('.jumbotron').detach();
 
-    if (questionNumber === 5) {
+    if (questionNumber === 10) {
         if (correct > incorrect) {
             $(".placeholder").append(win);
             stop();
-            return;
+            var resultTimeout = setTimeout(function () {
+                location.reload();
+                return;
+
+            }, 5000)
+
 
         }
         if (incorrect > correct) {
             $(".placeholder").append(lose);
             stop();
-            return;
+            var resultTimeout = setTimeout(function () {
+                location.reload()
+                return;
+
+            }, 5000)
+
         }
 
     }
@@ -181,20 +213,21 @@ if (gameStarted === 0) {
 
 $(document).on('click', ".question", function () {
     
-    
+
+
     var answer = questions[questionNumber].answer
 
     if (this.innerHTML === answer) {
         correct++;
         $(".correct").text(correct);
-        
+
 
         // $(".placeholder").append(correctScreen);
 
-    
-            
 
-        
+
+
+
         // var resultTimeout = setTimeout(function () {
         //     questionNumber++;
         //     roundtable();
@@ -206,32 +239,32 @@ $(document).on('click', ".question", function () {
     else {
         incorrect++;
 
-        function showResultB() {
-            $('.incorrect').text(incorrect);
 
-            // $(".placeholder").append(incorrectScreen)
-            // var incorrectScreen = $('<div>')
-            // var incorrectTitle = $('<div>')
+        $('.incorrect').text(incorrect);
 
-            // incorrectScreen.attr({
-            //     'class': "iscreen"
+        // $(".placeholder").append(incorrectScreen)
+        // var incorrectScreen = $('<div>')
+        // var incorrectTitle = $('<div>')
 
-            // })
-            // incorrectTitle.attr({
-            //     'class': "ititle"
+        // incorrectScreen.attr({
+        //     'class': "iscreen"
 
-            // })
-            // console.log("did you wait");
+        // })
+        // incorrectTitle.attr({
+        //     'class': "ititle"
 
-        }
+        // })
+        // console.log("did you wait");
 
-        
+
+
+
 
     }
     questionNumber++;
-            roundtable();
-            
-    
+    roundtable();
+
+
 })
 
 function checkTime() {
@@ -258,7 +291,7 @@ function checkTime() {
 
 // decreases the timer
 function run() {
-    number = 30
+    number = 15
     intervalId = setInterval(decrement, 1000);
 
 }

@@ -1,8 +1,17 @@
 body{
     font-family: 'Bungee Inline', cursive;
+    
+    color: orange;
+    background-image: url("https://i.pinimg.com/originals/76/26/d7/7626d73942c01632c95e9691931166e0.jpg");
 }
 
 
+.jumbotron{
+background-image: url("http://wallpaperzone.co/wp-content/uploads/2016/07/Pokemon-Go-Characters-HD-Wallpaper.png");
+background-size: cover;
+    
+
+}
 
 .question{
     text-align: center;
@@ -14,7 +23,7 @@ body{
     margin-top: 8px;
     margin-bottom: 8px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-    transition: box-shadow 1s, transform 2s;
+    transition: box-shadow 1s, transform 1s;
     border: 1px solid white;
     border-radius: 2px;
 
@@ -23,7 +32,7 @@ body{
 
 .question:hover{
     transform: translate(5px,10px);
-    transition: box-shadow 1s, transform 2s;
+    transition: box-shadow 1s, transform 1s;
 }
 
 .questions{
@@ -33,3 +42,5 @@ body{
     font-size: 42px;
 
 }
+
+

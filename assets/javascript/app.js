@@ -20,6 +20,7 @@ var intervalId;
 
 var gameStarted = 0
 
+var audio = new Audio("assets/images/2-67 Battle! Champion.mp3");
 
 
 
@@ -102,7 +103,7 @@ console.log(questions[questionNumber].choice[1]);
 function roundtable() {
     stop();
     // moves to the next question
-
+    audio.play();
     $('screen').detach();
     $('.question').detach();
     $('.questions').detach();
